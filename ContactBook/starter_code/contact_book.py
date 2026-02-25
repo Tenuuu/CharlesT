@@ -44,15 +44,19 @@ def add_contact(contacts, name, phone, email, category):
     # TODO: Append to contacts list
     # TODO: Return the new contact
     
-    created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    # Register the time that the new contact was made
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    # Input contact info into a dictionary object
     contact = {
         "name" : name, 
         "phone" : phone, 
         "email" : email, 
         "category" : category,
-        "timestamp" : created_at
+        "created_at" : timestamp
     }
 
+    # Put the new contact into the contacts list
     return contacts.append(contact)
 
 
@@ -77,7 +81,18 @@ def display_all_contacts(contacts):
     # TODO: Print table headers
     # TODO: Loop through contacts and print each row
     # TODO: Print footer
-    pass
+    
+    # Header
+    print("=" * 40)
+    print(" " * 8 + f"CONTACT BOOK ({len(contacts)} contacts)")
+    print("=" * 40)
+    print("#  | Name            | Phone         | Category")
+    print("---|-----------------|---------------|----------")
+
+    # Iterate through contacts list and display relevant info
+    # TODO: generate space in between each column to look like the expected output
+    for i, contact in enumerate(contacts):
+        print(f"{i}{" " * 3}{contact["name"]}{" " * 18}{contact["phone"]} | {contact["category"]}")
 
 
 def display_contact_details(contact):
@@ -94,7 +109,13 @@ def display_contact_details(contact):
     ------------------------
     """
     # TODO: Print formatted contact details
-    pass
+    print("--- Contact Details ---")
+    print(f"Name: {contact["name"]}")
+    print(f"Phone: {contact["phone"]}")
+    print(f"Email: {contact["email"]}")
+    print(f"Category: {contact["category"]}")
+    print(f"Added: {contact["created_at"]}")
+    print("-----------------------")
 
 
 # =============================================================================
@@ -111,7 +132,16 @@ def search_by_name(contacts, query):
     """
     # TODO: Filter contacts where query is in name (case-insensitive)
     # Hint: Use list comprehension and .lower()
-    pass
+    
+    matched = []
+
+    # Scan through 
+    for contact in contacts:
+        curr_name = contact["name"].lower()
+        if curr_name.find(query.lower()) >= 0:
+            matched.append(contact)
+
+    return matched
 
 
 def filter_by_category(contacts, category):
@@ -228,11 +258,15 @@ if __name__ == "__main__":
     print("=" * 40)
     
     # TODO: Add at least 5 sample contacts
-    #add_contact(contacts, "Alice Johnson", "555-123-4567", "alice@example.com", "friend")
+    add_contact(contacts, "Alice Johnson", "555-123-4567", "alice@example.com", "friend")
+    add_contact(contacts, "Bob Smith", "555-987-6543", "bob@work.com", "work")
+    add_contact(contacts, "Carol White", "555-456-7890", "carol@family.net", "family")
     
     # TODO: Test your functions
-    # display_all_contacts(contacts)
-    # results = search_by_name(contacts, "alice")
+    display_all_contacts(contacts)
+    display_contact_details(contacts[0])
+    results = search_by_name(contacts, "alice")
+    print(results)
     # etc.
     
     # STRETCH: Uncomment to run interactive menu
