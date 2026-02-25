@@ -32,6 +32,21 @@ print()
 # - food: Food/Groceries
 # - transportation: Transportation (gas, public transit)
 
+# income = float(input("Enter your monthly income: "))
+
+def getInfo():
+
+    # Allows the user to input their information
+    name = input("Enter your name: ")
+    income = float(input("Enter your monthly income: "))
+    rent = float(input("Enter your expenses for rent: "))
+    utilities = float(input("Enter your expenses for utilities: "))
+    food = float(input("Enter your expenses for food: "))
+    transportation = float(input("Enter your expenses for transportation: "))
+
+
+
+
 
 # =============================================================================
 # TODO: Task 2 - Perform Calculations
@@ -82,3 +97,9 @@ print()
 # =============================================================================
 # Add a section showing what percentage each expense is of total income
 # Example: print(f"  - Rent/Housing:    {(rent/income)*100:.1f}% of income")
+
+def main():
+    getInfo()
+
+if __name__ == "__main__":
+    main()
