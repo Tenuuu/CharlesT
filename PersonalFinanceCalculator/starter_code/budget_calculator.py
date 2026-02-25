@@ -115,7 +115,25 @@ def main():
     # Based on calculations, determine the financial status
     status = financialStatus(balance)
 
-    
+    # Display the results for the user based on their inputs
+    print()
+    print("=" * 44)
+    print("       PERSONAL FINANCE CALCULATOR")
+    print("=" * 44)
+    print(f"Name: {name}")
+    print(f"Monthly Income: ${income}")
+    print()
+    print("EXPENSES:")
+    print(f"  - Rent / Housing:    ${rent:.2f}")
+    print(f"  - Utilities:         ${utilities:.2f}")
+    print(f"  - Food / Groceries:  ${food:.2f}")
+    print(f"  - Transportation:    ${transportation:.2f}")
+    print("-" * 22)
+    print(f"Total Expenses:        ${total_expenses:.2f}")
+    print(f"Remaining Balance:     ${balance:.2f}")
+    print(f"Savings Rate:          {savings_rate:.1f}%")
+    print()
+    print(f"Status: You are {status}!")
     
 
 if __name__ == "__main__":
