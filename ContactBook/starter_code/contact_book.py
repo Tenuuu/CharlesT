@@ -43,7 +43,17 @@ def add_contact(contacts, name, phone, email, category):
     # TODO: Add created_at timestamp using datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     # TODO: Append to contacts list
     # TODO: Return the new contact
-    pass
+    
+    created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    contact = {
+        "name" : name, 
+        "phone" : phone, 
+        "email" : email, 
+        "category" : category,
+        "timestamp" : created_at
+    }
+
+    return contacts.append(contact)
 
 
 # =============================================================================
@@ -218,7 +228,7 @@ if __name__ == "__main__":
     print("=" * 40)
     
     # TODO: Add at least 5 sample contacts
-    # add_contact(contacts, "Alice Johnson", "555-123-4567", "alice@example.com", "friend")
+    #add_contact(contacts, "Alice Johnson", "555-123-4567", "alice@example.com", "friend")
     
     # TODO: Test your functions
     # display_all_contacts(contacts)
