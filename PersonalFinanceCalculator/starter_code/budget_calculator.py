@@ -99,11 +99,29 @@ def main():
     
     # Allows the user to input their information
     name = input("Enter your name: ")
+    if name.isalnum() == False:
+        name = "Anonymous"
+
     income = float(input("Enter your monthly income: "))
+    if income <= 0.0:
+        print("ERROR: Value must be greater than zero. Exiting...")
+        return
+
     rent = float(input("Enter your expenses for rent: "))
+    if rent < 0:
+        rent = 0
+    
     utilities = float(input("Enter your expenses for utilities: "))
+    if utilities < 0:
+        utilities = 0
+    
     food = float(input("Enter your expenses for food: "))
+    if food < 0:
+        food = 0
+    
     transportation = float(input("Enter your expenses for transportation: "))
+    if transportation < 0:
+        transportation = 0
 
     # Calculate balance
     total_expenses = rent + utilities + food + transportation
@@ -121,18 +139,29 @@ def main():
     print("       PERSONAL FINANCE CALCULATOR")
     print("=" * 44)
     print(f"Name: {name}")
-    print(f"Monthly Income: ${income}")
+    print(f"Monthly Income: ${income:.2f}")
     print()
+    
     print("EXPENSES:")
     print(f"  - Rent / Housing:    ${rent:.2f}")
     print(f"  - Utilities:         ${utilities:.2f}")
     print(f"  - Food / Groceries:  ${food:.2f}")
     print(f"  - Transportation:    ${transportation:.2f}")
+    print()
+
+    print("  EXPENSE BREAKDOWN:")
+    print(f"  - Rent / Housing:    {((rent / income) * 100):.1f}%")
+    print(f"  - Utilities:         {((utilities / income) * 100):.1f}%")
+    print(f"  - Food / Groceries:  {((food / income) * 100):.1f}%")
+    print(f"  - Transportation:    {((transportation / income) * 100):.1f}%")
+    print()
+
     print("-" * 22)
     print(f"Total Expenses:        ${total_expenses:.2f}")
     print(f"Remaining Balance:     ${balance:.2f}")
     print(f"Savings Rate:          {savings_rate:.1f}%")
     print()
+    
     print(f"Status: You are {status}!")
     
 
