@@ -32,21 +32,6 @@ print()
 # - food: Food/Groceries
 # - transportation: Transportation (gas, public transit)
 
-# income = float(input("Enter your monthly income: "))
-
-def getInfo():
-
-    # Allows the user to input their information
-    name = input("Enter your name: ")
-    income = float(input("Enter your monthly income: "))
-    rent = float(input("Enter your expenses for rent: "))
-    utilities = float(input("Enter your expenses for utilities: "))
-    food = float(input("Enter your expenses for food: "))
-    transportation = float(input("Enter your expenses for transportation: "))
-
-
-
-
 
 # =============================================================================
 # TODO: Task 2 - Perform Calculations
@@ -98,8 +83,40 @@ def getInfo():
 # Add a section showing what percentage each expense is of total income
 # Example: print(f"  - Rent/Housing:    {(rent/income)*100:.1f}% of income")
 
+def financialStatus(balance):
+
+    # Compare the remaining balance in relation to 0 and return the status
+    if balance > 0:
+        status = "in the green"
+    elif balance < 0: 
+        status = "in the red"
+    else:
+        status = "breaking even"
+
+    return status
+
 def main():
-    getInfo()
+    
+    # Allows the user to input their information
+    name = input("Enter your name: ")
+    income = float(input("Enter your monthly income: "))
+    rent = float(input("Enter your expenses for rent: "))
+    utilities = float(input("Enter your expenses for utilities: "))
+    food = float(input("Enter your expenses for food: "))
+    transportation = float(input("Enter your expenses for transportation: "))
+
+    # Calculate balance
+    total_expenses = rent + utilities + food + transportation
+    balance = income - total_expenses
+
+    # Calculate savings rate (display with a % attached)
+    savings_rate = (balance/income) * 100
+
+    # Based on calculations, determine the financial status
+    status = financialStatus(balance)
+
+    
+    
 
 if __name__ == "__main__":
     main()
